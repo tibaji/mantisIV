@@ -1,37 +1,49 @@
 import { Routes } from '@angular/router';
+import { authGuard } from './guards/auth.guard';
+import { LoginComponent } from './pages/login/login.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'inicio', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  
+  { path: 'login', component: LoginComponent },
   
   { path: 'inicio', loadComponent: () => 
-    import('./pages/inicio/inicio.component').then(m => m.InicioComponent) 
+    import('./pages/inicio/inicio.component').then(m => m.InicioComponent),
+    canActivate: [authGuard]
   },
-  
+
   { path: 'orcamento/novo', loadComponent: () => 
-    import('./pages/orcamento/novo-orcamento/novo-orcamento.component').then(m => m.NovoOrcamento) 
+    import('./pages/orcamento/novo-orcamento/novo-orcamento.component').then(m => m.NovoOrcamento),
+    canActivate: [authGuard]
   },
-  
+
   { path: 'orcamento/editar', loadComponent: () => 
-    import('./pages/orcamento/editar-orcamento/editar-orcamento.component').then(m => m.EditarOrcamento) 
+    import('./pages/orcamento/editar-orcamento/editar-orcamento.component').then(m => m.EditarOrcamento),
+    canActivate: [authGuard]
   },
-  
+
   { path: 'orcamento/taxa-entrega', loadComponent: () => 
-    import('./pages/orcamento/taxa-entrega/taxa-entrega.component').then(m => m.TaxaEntrega) 
+    import('./pages/orcamento/taxa-entrega/taxa-entrega.component').then(m => m.TaxaEntrega),
+    canActivate: [authGuard]
   },
-  
+
   { path: 'pedidos', loadComponent: () => 
-    import('./pages/pedidos/pedidos.component').then(m => m.Pedidos) 
+    import('./pages/pedidos/pedidos.component').then(m => m.Pedidos),
+    canActivate: [authGuard]
   },
-  
+
   { path: 'relatorios/produtos', loadComponent: () => 
-    import('./pages/relatorios/relatorio-produtos/relatorio-produtos.component').then(m => m.RelatorioProdutos) 
+    import('./pages/relatorios/relatorio-produtos/relatorio-produtos.component').then(m => m.RelatorioProdutos),
+    canActivate: [authGuard]
   },
-  
+
   { path: 'relatorios/pedidos', loadComponent: () => 
-    import('./pages/relatorios/relatorio-pedidos/relatorio-pedidos.component').then(m => m.RelatorioPedidos) 
+    import('./pages/relatorios/relatorio-pedidos/relatorio-pedidos.component').then(m => m.RelatorioPedidos),
+    canActivate: [authGuard]
   },
-  
+
   { path: 'relatorios/clientes', loadComponent: () => 
-    import('./pages/relatorios/relatorio-clientes/relatorio-clientes.component').then(m => m.RelatorioClientes) 
+    import('./pages/relatorios/relatorio-clientes/relatorio-clientes.component').then(m => m.RelatorioClientes),
+    canActivate: [authGuard]
   }
 ];
