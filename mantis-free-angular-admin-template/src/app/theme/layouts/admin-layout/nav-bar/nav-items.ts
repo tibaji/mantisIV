@@ -40,7 +40,7 @@ export const NavItems: NavItem[] = [
         id: 'listar-orcamento',
         title: 'Gerenciar Orçamentos',
         type: 'item',
-        icon: 'edit',
+        icon: 'manage_search',
         url: '/orcamentos'
       },
       {
